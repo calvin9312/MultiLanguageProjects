@@ -1,0 +1,126 @@
+//include dependencies
+#include <QCoreApplication>
+
+#include <iostream>
+#include <windows.h>
+#include <QRegularExpression>
+
+
+//START_FUNCTION MAIN
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+
+//START_LOOP_WHILE (TRUE) :WLP1
+    while(true)
+    {
+//PRINTLN "=============================="
+        std::cout << "==============================" << std::endl;
+//PRINTLN "Select Mode : Try Expression = 0, Exit = 1"
+        std::cout << "Select Mode : Try Expression = 0, Exit = 1" << std::endl;
+//PRINTLN "=============================="
+        std::cout << "==============================" << std::endl;
+
+//INITIALIZE var:input_val type:INT val:-1
+        int input_val = -1;
+//READFROMUSER storevar:input_val
+        std::cin >> input_val;
+//START_IF (var:input_val == 0) :IF1
+        if(input_val == 0)
+        {
+//INITIALIZE var:pattern type:STRING val:
+            std::string pattern;
+//INITIALIZE var:text type:STRING val:
+            std::string text;
+
+//PRINTLN "Enter Regular Expression : "
+            std::cout << "Enter Regular Expression : " << std::endl;
+//READFROMUSER storevar:pattern
+            std::cin >> pattern;
+
+//START_LOOP_WHILE (TRUE) :WLP2
+            while(true)
+            {
+//PRINTLN "Enter Text : "
+                std::cout << "Enter Text : " << std::endl;
+//READFROMUSER storevar:text
+                std::cin >> text;
+
+//PRINTLN "Exp = var:pattern   : Text = var:text"
+                std::cout << "Exp = " << pattern << "   : Text = " << text << std::endl;
+
+//SLEEP 1s
+                Sleep(1000);
+
+                const QString text_qstring(text.c_str());
+                const QString pattern_qstring(pattern.c_str());
+                const QRegularExpression reg_exp(pattern_qstring);
+                const QRegularExpressionMatch match = reg_exp.match(text_qstring);
+                if(match.hasMatch())
+                {
+//PRINTLN "Text is a match"
+                    std::cout << "Text is a match" << std::endl;
+                }
+                else
+                {
+//PRINTLN "Text is not a match"
+                    std::cout << "Text is not a match" << std::endl;
+                }
+
+//PRINTLN "------------------------------"
+                std::cout << "------------------------------" << std::endl;
+//PRINTLN "Select Mode : Try More Text = 0, Exit = 1"
+                std::cout << "Select Mode : Try More Text = 0, Exit = 1" << std::endl;
+//PRINTLN "------------------------------"
+                std::cout << "------------------------------" << std::endl;
+
+//INITIALIZE var:try_again type:INT val:0
+                int try_again;
+//READFROMUSER storevar:try_again
+                std::cin >> try_again;
+
+                if(try_again == 0)
+                {
+//PRINTLN "Trying more text."
+                    std::cout << "Trying more text." << std::endl;
+                }
+                else if(try_again == 1)
+                {
+//PRINTLN "Done trying text."
+                    std::cout << "Done trying text." << std::endl;
+//BREAK :WLP2
+                    break;
+                }
+                else
+                {
+//PRINTLN "Error bad input : "
+                    std::cout << "Error bad input : " << std::endl;
+                }
+//START_LOOP_WHILE :WLP2
+            }
+//END_IF :IF1
+        }
+//START_ELSE_IF (var:input_val == 1) :ELIF2
+        else if(input_val == 1)
+        {
+//PRINTLN "GoodBye"
+            std::cout << "Goodbye" << std::endl;
+//BREAK :WLP1
+            break;
+//END_ELSE_IF :ELIF2
+        }
+//START_ELSE :ELSE3
+        else
+        {
+//PRINTLN "Error bad input : "
+            std::cout << "Error bad input : " << std::endl;
+//END_ELSE :ELSE3
+        }
+
+//SLEEP 1s
+        Sleep(1000);
+//END_LOOP_WHILE :WLP1
+    }
+
+//END_FUNCTION MAIN
+}
