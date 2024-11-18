@@ -1,8 +1,15 @@
 #include <QCoreApplication>
+#include <QRegularExpression>
 
 #include <iostream>
+
+#if defined(__linux__)
+#include <unistd.h>
+#define Sleep usleep
+#else
 #include <windows.h>
-#include <QRegularExpression>
+#endif
+
 
 int main(int argc, char *argv[])
 {
