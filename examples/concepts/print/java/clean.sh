@@ -1,0 +1,1 @@
+../../../../scripts/java/basic_clean.sh

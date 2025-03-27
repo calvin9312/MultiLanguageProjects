@@ -1,0 +1,1 @@
+../../../../scripts/java/basic_single_file_run.sh
