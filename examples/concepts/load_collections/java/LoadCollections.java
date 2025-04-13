@@ -13,24 +13,20 @@ public class LoadCollections {
 				String line = reader.readLine();
 
 				while(line != null) {
-					System.out.println(line);
 					final String[] number_strings = line.split(",");
 	
 					int[] numbers = new int[number_strings.length];
+					
+					List<int> number_list = new ArrayList<int>();
+					Iterator<int> number_list = new Iterator<int>();
+					Set<int> number_list = new HashSet<int>();
+					Map<int> number_list = new HashMap<int, String>();
 					for(int i = 0; i < number_strings.length; i++) {
 						numbers[i] = Integer.valueOf(number_strings[i]);
 					}
-				
-					String unordered_line = "";
-					for(int number : numbers) {
-						if(!unordered_line.isEmpty()) {
-							unordered_line = unordered_line.concat(", ");
-						}
-						unordered_line = unordered_line.concat(String.valueOf(number));
-					}
 
-					System.out.println("Unordered numbers");
-					System.out.println(unordered_line);
+					printArrayOfNumbers(numbers);
+				
 					line = reader.readLine();
 				}
 
@@ -46,5 +42,18 @@ public class LoadCollections {
 		} catch (IOException ex) {
 
 		}
+	}
+	
+	public static void printArrayOfNumbers(int[] numbers) {
+		String unordered_line = "";
+		for(int number : numbers) {
+			if(!unordered_line.isEmpty()) {
+				unordered_line = unordered_line.concat(", ");
+			}
+			unordered_line = unordered_line.concat(String.valueOf(number));
+		}
+
+		System.out.println("Unordered numbers");
+		System.out.println(unordered_line);
 	}
 } 
