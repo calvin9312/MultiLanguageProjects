@@ -1,0 +1,1 @@
+../../../../scripts/c++/basic_clean.sh

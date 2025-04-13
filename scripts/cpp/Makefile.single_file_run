@@ -1,0 +1,10 @@
+PROGRAM := $(shell basename $$(dirname $$(pwd)))
+
+all: build/$(PROGRAM)
+
+build/$(PROGRAM): main.cpp
+	mkdir -p build
+	g++ main.cpp -o build/${PROGRAM}
+
+clean:
+	rm -rf build
