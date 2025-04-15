@@ -1,3 +1,8 @@
 #!/bin/bash
 PROGRAM=$(basename $(dirname $(pwd)))
-./build/$PROGRAM
+if [[ $1 == "debug" ]]
+then
+	gdb ./build/$PROGRAM
+else
+	./build/$PROGRAM
+fi

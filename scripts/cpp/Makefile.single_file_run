@@ -1,6 +1,14 @@
 PROGRAM := $(shell basename $$(dirname $$(pwd)))
 
-all: build/$(PROGRAM)
+
+all: build
+
+debug:
+	make build CXXFLAGS="-g"
+
+build : 
+	mkdir -p build
+	g++ main.cpp $(CXXFLAGS) -o build/$(PROGRAM)
 
 build/$(PROGRAM): main.cpp
 	mkdir -p build
@@ -8,3 +16,5 @@ build/$(PROGRAM): main.cpp
 
 clean:
 	rm -rf build
+
+.PHONY: build
